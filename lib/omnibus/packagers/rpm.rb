@@ -277,6 +277,30 @@ module Omnibus
     end
     expose :compression_level
 
+    # Set or return the epoch of the package
+    #
+    # @example
+    #   epoch 1
+    #
+    # @param [Fixnum] val
+    #   the epoch of the package
+    #
+    # @return [Fixnum]
+    #   the epoch of the package
+    #
+    def epoch(val = NULL)
+      if null?(val)
+        @epoch # nil response is okay
+      else
+        unless val.is_a?(Fixnum)
+          raise InvalidValue.new(:epoch, 'be a Fixnum')
+        end
+
+        @epoch = val
+      end
+    end
+    expose :epoch
+
     #
     # @!endgroup
     # --------------------------------------------------
@@ -361,6 +385,7 @@ module Omnibus
       render_template(resource_path("spec.erb"),
         destination: spec_file,
         variables: {
+<<<<<<< HEAD
           name:            safe_base_package_name,
           version:         safe_version,
           iteration:       safe_build_iteration,
@@ -371,6 +396,7 @@ module Omnibus
           homepage:        project.homepage,
           description:     project.description,
           priority:        priority,
+          epoch:           epoch,
           category:        category,
           conflicts:       project.conflicts,
           replaces:        project.replaces,
