@@ -297,6 +297,16 @@ module Omnibus
       "us-east-1"
     end
 
+    # The HTTP or HTTPS endpoint to send requests to, when using non-standard endpoint
+    #
+    # @return [String, nil]
+    default(:s3_endpoint, nil)
+
+    # Enable or disable S3 Accelerate support
+    #
+    # @return [true, false]
+    default(:s3_accelerate, false)
+
     # --------------------------------------------------
     # @!endgroup
     #
@@ -470,6 +480,12 @@ module Omnibus
       end
       :x86
     end
+
+    # Flag specifying whether the project should be built with FIPS
+    # compatability or not.
+    #
+    # @return [true, false]
+    default(:fips_mode, false)
 
     # --------------------------------------------------
     # @!endgroup

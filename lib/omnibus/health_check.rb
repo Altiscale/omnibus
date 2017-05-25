@@ -124,6 +124,12 @@ module Omnibus
       /libgcc_s.so/,
       /libstdc\+\+\.so/,
       /libcrypt.so/,
+      /libcrypto.so/,
+      /libssl.so/,
+      /libssp\.so/,
+      /libumem\.so/,
+      /libffi\.so/,
+      /libz\.so/, # while we package our own libz, this get dragged along from Solaris 11's libelf library for some reason...
     ].freeze
 
     MAC_WHITELIST_LIBS = [
@@ -161,14 +167,26 @@ module Omnibus
     IGNORED_ENDINGS = %w{
       .TXT
       .[ch]
+      .[ch]pp
+      .[eh]rl
+      .app
+      .appup
       .bat
       .beam
+      .cc
       .cmake
+      .conf
+      .css
       .e*rb
+      .feature
       .gemspec
+      .gif
       .gitignore
+      .gitkeep
       .h*h
+      .jar
       .java
+      .jpg
       .js
       .jsm
       .json
@@ -179,15 +197,20 @@ module Omnibus
       .mkd
       .npmignore
       .out
+      .packlist
+      .perl
       .pl
       .pm
       .png
       .pod
+      .properties
       .py[oc]*
       .r*html
+      .rake
       .rdoc
       .ri
       .rst
+      .scss
       .sh
       .sql
       .svg
@@ -206,11 +229,15 @@ module Omnibus
     }.freeze
 
     IGNORED_PATTERNS = %w{
+      /build_info/
+      /licenses/
       /LICENSES/
       /man/
       /share/doc/
+      /share/info/
       /share/postgresql/
       /share/terminfo/
+      /share/timezone/
       /terminfo/
     }.freeze
 
