@@ -385,7 +385,6 @@ module Omnibus
       render_template(resource_path("spec.erb"),
         destination: spec_file,
         variables: {
-<<<<<<< HEAD
           name:            safe_base_package_name,
           version:         safe_version,
           iteration:       safe_build_iteration,
